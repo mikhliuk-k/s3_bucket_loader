@@ -1,0 +1,23 @@
+<% ctrl = "home--show" %>
+
+<main class="form-signin text-center" data-controller="<%= ctrl %>">
+
+  <div class="mb-3">
+
+    <%= form_with model: @object, data: { "#{ctrl}-target": 'form' } do |form| %>
+
+      <%= form.label :input, "Select file you want to load", class: 'form-label' %>
+
+      <%= form.file_field :file, direct_upload: true, object: 'file',
+                          data: { "#{ctrl}-target": 'fileInput', action: "change->#{ctrl}#onChangeFileInput" } %>
+
+      <%= form.submit 'Load file into bucket', class: 'btn btn-light mt-5', style: 'display: none',
+                      data: { "#{ctrl}-target": 'loadButton', action: "click->#{ctrl}#onClickLoadButton" } %>
+
+      <a href="#" data-<%= ctrl %>-target="fileLink" style="display: none"></a>
+
+    <% end %>
+
+  </div>
+
+</main>

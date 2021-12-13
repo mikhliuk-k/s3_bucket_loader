@@ -70,3 +70,7 @@ group :test do
   gem "selenium-webdriver", ">= 4.0.0"
   gem "webdrivers"
 end
+
+gem "google-cloud-storage", "~> 1.8", require: false
+gem 'dotenv-rails'
+gem 'activestorage'

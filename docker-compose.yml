@@ -2,8 +2,10 @@ version: '3.7'
 
 services:
   app:
-    image: mikhliukk/remove_chat_messages
+    image: mikhliukk/s3_bucket_loader:latest
     build:
       context: .
     ports:
       - '3000:3000'
+    volumes:
+      - ./config/master.key:/app/config/master.key

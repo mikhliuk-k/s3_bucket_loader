@@ -16,11 +16,24 @@ local:
 
 # Remember not to checkin your GCS keyfile to a repository
 
+<% gcs = Rails.application.credentials[:gcs] %>
+<% gcs_creds = gcs[:credentials] %>
+
 google:
   service: GCS
-  project: <%= ENV['PROJECT_ID'] %>
-  credentials: <%= Rails.root.join ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
-  bucket: <%= ENV['BUCKET_NAME'] %>
+  project: <%= gcs[:project] %>
+  credentials:
+    type: <%= gcs_creds[:type] %>
+    project_id: <%= gcs_creds[:project_id] %>
+    private_key_id: <%= gcs_creds[:private_key_id] %>
+    private_key: <%= gcs_creds[:private_key].inspect %>
+    client_email: <%= gcs_creds[:client_email] %>
+    client_id: <%= gcs_creds[:client_id] %>
+    auth_uri: <%= gcs_creds[:auth_uri] %>
+    token_uri: <%= gcs_creds[:token_uri] %>
+    auth_provider_x509_cert_url: <%= gcs_creds[:auth_provider_x509_cert_url] %>
+    client_x509_cert_url: <%= gcs_creds[:client_x509_cert_url] %>
+  bucket: <%= Rails.application.credentials.dig(:gcs, :bucket) %>
 
 # Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:

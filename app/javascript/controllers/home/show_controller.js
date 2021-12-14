@@ -34,7 +34,7 @@ export default class extends Controller {
             } else {
                 this._updateLink(blob.filename, `https://storage.cloud.google.com/mikhiuk-file-storage/${blob.key}`);
                 this.fileInputTarget.disabled = false;
-                this.fileInput.value = null;
+                this.fileInputTarget.value = null;
             }
         });
     }

@@ -11,7 +11,7 @@
       <%= form.file_field :file, direct_upload: true, object: 'file',
                           data: { "#{ctrl}-target": 'fileInput', action: "change->#{ctrl}#onChangeFileInput" } %>
 
-      <%= form.submit 'Load file into bucket', class: 'btn btn-light mt-5', style: 'display: none',
+      <%= form.submit 'Load file into bucket', class: 'btn btn-outline-secondary mt-5', style: 'display: none',
                       data: { "#{ctrl}-target": 'loadButton', action: "click->#{ctrl}#onClickLoadButton" } %>
 
       <a href="#" data-<%= ctrl %>-target="fileLink" style="display: none"></a>
